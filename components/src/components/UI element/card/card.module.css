@@ -1,0 +1,58 @@
+.cards__card {
+    width: 302px;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-radius: 5px;
+}
+
+.card__text {
+    text-align: center;
+}
+
+.card__age {
+    margin: 0 0 8px 0;
+}
+
+.card__text .card__name {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 121%;
+    margin: 0 0 8px 0;
+}
+
+.card__breed {
+    font-size: 18px;
+    line-height: 122%;
+    margin: 0 0 8px 0;
+}
+
+.card__cattery {
+    margin: 0 0 11px 0;
+}
+
+.card__price {
+    position: relative;
+    font-size: 28px;
+    line-height: 121%;
+    color: #28C8A4;
+    margin: 0 0 12px 0;
+}
+
+.card__rating {
+    font-size: 50%;
+    line-height: 1;
+    padding: 0 0 0 10px;
+}
+
+.card__images {
+    position: relative;
+    text-align: center;
+    margin: 8px 8px 11px 8px;
+}
+
+.card__images img {
+    width: 286px;
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+}
