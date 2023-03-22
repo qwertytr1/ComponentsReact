@@ -92,7 +92,7 @@ body {
 }
 
 .nav .item:hover {
-  color: #C8945D;
+  color: #c8945d;
 }
 
 .main {
@@ -113,8 +113,8 @@ body {
   width: 100%;
   left: 0;
   top: 0;
-  background: #F3F4F5;
-  border-top: 1px solid #C8945D;
+  background: #f3f4f5;
+  border-top: 1px solid #c8945d;
 }
 
 .footer__items {
