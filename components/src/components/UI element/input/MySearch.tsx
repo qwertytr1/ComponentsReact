@@ -1,45 +1,46 @@
-import React, { ChangeEvent } from 'react';
+import React, { type ChangeEvent } from 'react';
 import classes from './search.module.css';
-import ISearchProps from './intForExport';
+import type ISearchProps from './intForExport';
 
 class MySearch extends React.Component<object, ISearchProps> {
-    constructor(props: ISearchProps) {
-        super(props);
-    }
+  constructor(props: ISearchProps) {
+    super(props);
+  }
 
-    handleChange(e: ChangeEvent) {
-        const searchInput = e.target as HTMLInputElement;
-        this.setState({ value: searchInput.value });
-    }
-    componentWillUnmount() {
-        if (!this.state) return;
+  handleChange(e: ChangeEvent) {
+    const searchInput = e.target as HTMLInputElement;
+    this.setState({ value: searchInput.value });
+  }
 
-        const value = this.state.value;
-        if (value) localStorage.setItem('searchInput', value);
-    }
+  componentWillUnmount() {
+    if (!this.state) return;
 
-    componentDidMount() {
-        const value = localStorage.getItem('searchInput');
+    const value = this.state.value;
+    if (value) localStorage.setItem('searchInput', value);
+  }
 
-        if (!value) return;
+  componentDidMount() {
+    const value = localStorage.getItem('searchInput');
 
-        if (value) this.setState({ value: value });
-    }
+    if (!value) return;
 
-    render() {
-        return (
-            <div className="search">
-                <input
-                    className={classes.search}
-                    {...this.props}
-                    onChange={(e) => {
-                        this.handleChange(e);
-                    }}
-                    value={this.state ? this.state.value : ''}
-                />
-            </div>
-        );
-    }
+    if (value) this.setState({ value });
+  }
+
+  render() {
+    return (
+      <div className="search">
+        <input
+          className={classes.search}
+          {...this.props}
+          onChange={(e) => {
+            this.handleChange(e);
+          }}
+          value={this.state ? this.state.value : ''}
+        />
+      </div>
+    );
+  }
 }
 
 export default MySearch;
