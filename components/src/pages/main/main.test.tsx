@@ -1,9 +1,9 @@
 import React from 'react';
 import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { CardList } from './components/cardList';
+import { CardList } from '../../components/cardList';
 
-import { Main } from './pages/mainPage';
+import { Main } from './mainPage';
 
 describe('main', () => {
   it('Renders heading', () => {

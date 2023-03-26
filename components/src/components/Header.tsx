@@ -18,6 +18,9 @@ class Header extends Component<Props, { title: string }> {
       case '/about':
         this.setState({ title: 'About page' });
         break;
+      case '/form':
+        this.setState({ title: 'Form Page' });
+        break;
       default:
         this.setState({ title: 'page 404' });
     }
@@ -48,6 +51,15 @@ class Header extends Component<Props, { title: string }> {
               to="/about"
             >
               About
+            </NavLink>
+            <NavLink
+              onClick={() => {
+                this.setState({ title: 'Form page' });
+              }}
+              className="item"
+              to="/form"
+            >
+              Form
             </NavLink>
           </nav>
         </div>

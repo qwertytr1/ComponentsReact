@@ -1,0 +1,29 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 10px;
+    width: 50%;
+    height: 250px;
+    margin: auto;
+}
+
+.submit {}
+
+button {
+    width: 65px;
+    height: 15px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+}
+
+.cards_list {
+    display: flex;
+    justify-content: space-around;
+}

@@ -4,7 +4,7 @@
 
 .checkbox {
     width: 30px;
-    height: calc(width / 2);
+    height: calc(30px / 2);
     position: relative;
     appearance: none;
     outline: none;
@@ -18,8 +18,8 @@
 .checkbox::before {
     content: '';
     position: absolute;
-    width: calc(width / 2);
-    height: height;
+    width: calc(30px / 2);
+    height: 15px;
     border-radius: 20px;
     top: 0;
     left: 0;
@@ -30,5 +30,5 @@
 }
 
 .checkbox:checked::before {
-    left: calc(width / 2);
+    left: calc(30px / 2);
 }
