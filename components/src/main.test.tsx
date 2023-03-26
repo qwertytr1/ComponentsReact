@@ -3,7 +3,7 @@ import { describe, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { CardList } from './components/cardList';
 
-import { Main } from './mainPage';
+import { Main } from './pages/mainPage';
 
 describe('main', () => {
   it('Renders heading', () => {

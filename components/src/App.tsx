@@ -1,16 +1,18 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
-import { Main } from './mainPage';
-import Page404 from './404';
-import About from './about';
+import { Main } from './pages/mainPage';
+import Page404 from './pages/404';
+import About from './pages/about';
 import { Layout } from './components/layout';
 
-function App() {
-  return (
+
+export const routers = createBrowserRouter(
+  createRoutesFromElements(
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
+          {/* <Route path='/form' element={<FormPage />} /> */}
           <Route index element={<Main />} />
           <Route path="/about" element={<About />} />
           <Route path="/404" element={<Page404 />} />
@@ -18,7 +20,11 @@ function App() {
         </Route>
       </Routes>
     </>
-  );
-}
 
+  )
+)
+
+function App() {
+  return (<RouterProvider router={routers} />);
+};
 export default App;
