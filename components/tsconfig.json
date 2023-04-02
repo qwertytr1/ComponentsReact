@@ -12,6 +12,7 @@
     "esModuleInterop": true,
     "baseUrl": "./src",
     "noImplicitAny": true,
+    "noImplicitThis": false,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,

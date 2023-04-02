@@ -1,7 +1,7 @@
 import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements, Routes } from 'react-router-dom';
 import './App.css';
 import React from 'react';
-import { Main } from './pages/main/mainPage';
+import Main from './pages/main/mainPage';
 import Page404 from './pages/404/404';
 import About from './pages/about/about';
 import { Layout } from './components/layout';

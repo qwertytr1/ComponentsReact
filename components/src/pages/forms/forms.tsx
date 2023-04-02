@@ -90,7 +90,7 @@ function FormPage() {
                     <div className={styles.cards_list} data-testid="not-empty">
                         {cards.map((card) => (
                             <div key={card.id}>
-                                <FormCard data={card} />
+                                <FormCard dataPr={card} />
                             </div>
                         ))}
                     </div>
@@ -101,3 +101,4 @@ function FormPage() {
         </>
     );
 }
+export default FormPage;
