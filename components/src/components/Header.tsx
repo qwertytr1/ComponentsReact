@@ -9,23 +9,6 @@ class Header extends Component<Props, { title: string }> {
       title: '',
     };
   }
-
-  componentDidMount() {
-    switch (location.pathname) {
-      case '/':
-        this.setState({ title: 'Main page' });
-        break;
-      case '/about':
-        this.setState({ title: 'About page' });
-        break;
-      case '/form':
-        this.setState({ title: 'Form Page' });
-        break;
-      default:
-        this.setState({ title: 'page 404' });
-    }
-  }
-
   render() {
     return (
       <div className="header__container">
