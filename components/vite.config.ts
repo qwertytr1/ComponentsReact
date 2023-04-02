@@ -13,6 +13,9 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       provider: 'c8',
+      all: true,
+      skipFull: false,
+      reporter: 'text',
     },
     setupFiles: ['./src/setupTests.ts'],
   },
