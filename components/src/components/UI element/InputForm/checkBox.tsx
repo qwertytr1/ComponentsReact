@@ -1,31 +1,27 @@
-import React, { RefObject } from "react";
+import React, { useState } from 'react';
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
 type TypeForCheckbox = {
     label: string;
-    type?: string;
-    name: string;
-    reference: RefObject<HTMLInputElement>;//for access to DOW element
-    error: string;
+    field: string;
+    register: UseFormRegister<FieldValues>;//for access to DOW element
+    error: FieldErrors<FieldValues>;
 }
-class CheckBox extends React.Component<TypeForCheckbox>{
-    state = { isChecked: true };
-    getInputClasses = () => {
-        return "form-check-inputblock" + (this.props.error ? ' is-invalid' : '');
-    }
-    render(): React.ReactNode {
-        return (
-            <div className="form-checked">
-                <input type="checkbox"
-                    className={this.getInputClasses()}
-                    data-id={this.props.name}
-                    defaultChecked={this.state.isChecked}
-                    ref={this.props.reference}
-                />
-                <label className="formCheckedLabel"
-                    data-htmlFor={this.props.name}>{this.props.label}</label>
-                {<div className="errorInCheck">{this.props.error}</div>}
+function CheckBox({ label, field, error, register }: TypeForCheckbox) {
+    const [isChecked] = useState(false);
+    return (
+        <div className="form-checked">
+            <input type="checkbox"
+                id={field}
+                defaultChecked={isChecked}
+                {...register(field, {
+                    required: 'You want to answer on this question'
+                })}
+            />
+            <label className="formCheckedLabel"
+                htmlFor={field}>{label}</label>
+            {<div className="errorInCheck" data-testid="error">{error[field]?.message?.toString()}</div>}
 
-            </div>
-        )
-    }
+        </div>
+    )
 }
 export default CheckBox;
