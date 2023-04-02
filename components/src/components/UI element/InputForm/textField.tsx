@@ -1,56 +1,42 @@
-import React, { RefObject } from 'react';
-
-type TypeText = {
+import { FieldErrors, FieldValues, UseFormRegister } from 'react-hook-form';
+import Regexp from './patternForText';
+import React from 'react'
+type TextProps = {
     label: string;
+    field: string;
     type?: string;
-    name: string;
-    value: string;
-    error: string;
-    onChange: () => void;
+    error: FieldErrors<FieldValues>;
+    register: UseFormRegister<FieldValues>;
 };
 
-type TypeStateTextField = { showPassword: boolean };
-
-class Text extends React.Component<TypeText, TypeStateTextField> {
-    static defaultProps: { type: string };
-    constructor(props: Readonly<TypeText>) {
-        super(props);
-        this.state = { showPassword: false };
-    }
-    handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(target);
-    };
-    toggleShowPassword = () => {
-        this.setState((prevState) => {
-            !prevState.showPassword;
-        });
-    };
-    render(): React.ReactNode {
-        return (
+function TextField({ label, error, register, type, field }: TextProps) {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = now.getMonth().toString().padStart(2, '0');
+    const day = now.getDate().toString().padStart(2, '0');
+    return (
+        <div>
+            <label htmlFor={field}>{label}</label>
             <div>
-                <label data-htmlfor={this.props.name}>{this.props.label}</label>
-                <div>
-                    <input
-                        type={this.state.showPassword ? 'text' : this.props.type}
-                        data-id={this.props.name}
-                        data-name={this.props.name}
-                        value={this.props.value}
-                        onChange={this.handleChange}
-                    />
-                    {this.props.error && <div>{this.props.error}</div>}
-                    {this.props.type === 'password' && (
-                        <label htmlFor="chk">
-                            <input type="checkbox" id="chk" onChange={this.toggleShowPassword} checked={this.state.showPassword} />
-                            {'show password'}
-                        </label>
-                    )}
-                </div>
+                <input
+                    type={type}
+                    id={field}
+                    max={`${year}-${month}-${day}`}
+                    {...register(field, {
+                        required: 'This field is required',
+                        pattern: {
+                            value: Regexp[field].pattern,
+                            message: Regexp[field].message,
+                        },
+                    })}
+                />
+                {<div className="error">{error[field]?.message?.toString()}</div>}
             </div>
-        );
-    }
+        </div>
+    );
 }
-Text.defaultProps = {
+TextField.defaultProps = {
     type: 'text',
 };
 
-export default Text;
+export default TextField;
