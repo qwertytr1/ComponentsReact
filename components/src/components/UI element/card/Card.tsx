@@ -2,8 +2,8 @@
 import { useState } from 'react';
 import { TCharacters } from '../../types/types';
 import styles from './Card.module.scss';
-import Modal from '../../modal/Modal';
-import MoreDetailedCard from '../moreDetailedCard/MoreDetailedCard';
+import Modal from '../module/module';
+import MoreDetailedCard from '../moreDetailedCard/moreDetailedCard';
 import React from 'react';
 type TProps = {
   data: TCharacters['results'][0];
