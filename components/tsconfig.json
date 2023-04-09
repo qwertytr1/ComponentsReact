@@ -9,10 +9,8 @@
     ],
     "allowJs": false,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "baseUrl": "./src",
+    "esModuleInterop": false,
     "noImplicitAny": true,
-    "noImplicitThis": false,
     "noFallthroughCasesInSwitch": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -23,13 +21,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules"
-      }
-    ]
   },
   "include": [
+    "src",
     "./src/**/*",
     "styled.d.ts"
   ],
