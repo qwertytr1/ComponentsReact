@@ -1,28 +1,34 @@
+import { describe, expect, it } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+
+import SearchBar from './MySearch';
+import { useState } from 'react';
+import characterService from '../../../services/CharacterService';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import type SearchProps from './intForExport';
-import MySearch from './MySearch';
 
-describe('Test Search component', () => {
-  const prop: SearchProps = { type: 'search', placeholder: 'Input some body...' };
-  const testValue = 'catcatcat';
-  it('renders Search component', () => {
-    render(<MySearch {...prop} />);
-    expect(screen.getByPlaceholderText(/Input some body.../i)).toBeInTheDocument();
-  });
-  it('Renders Search component with data from localStorage', async () => {
-    localStorage.setItem('searchInput', testValue);
-    render(<MySearch {...prop} />);
-    expect(screen.getByDisplayValue(testValue)).toBeInTheDocument();
-  });
+const TestingSearch = () => {
+  const [sortBy, setSortBy] = useState(localStorage.getItem('rssSearch') || '');
+  const handleSearch = (value: string) => {
+    setSortBy(value);
+  };
+  const getCharacters = async (value = '') => {
+    await characterService.get(value);
+  };
 
-  it('Save value from MySearch component to localstorage when unmount', async () => {
-    localStorage.clear();
-    const { unmount } = render(<MySearch {...prop} />);
-    await userEvent.type(screen.getByPlaceholderText(/Input some body.../i), testValue);
-    unmount();
-    render(<MySearch {...prop} />);
-    expect(screen.getByDisplayValue(testValue)).toBeInTheDocument();
+  return <SearchBar setSortBy={handleSearch} sortBy={sortBy} getData={getCharacters} />;
+};
+
+describe('SearchBar component', () => {
+  it('Render List', () => {
+    render(<TestingSearch />);
+    expect(screen.getByTestId('search-input')).toBeInTheDocument();
+  });
+  it('typing', () => {
+    render(<TestingSearch />);
+    expect(screen.queryByDisplayValue('smth')).toBeNull();
+    fireEvent.change(screen.getByTestId('search-input'), {
+      target: { value: 'test' },
+    });
+    expect(screen.queryByDisplayValue(/test/)).toBeInTheDocument();
   });
 });

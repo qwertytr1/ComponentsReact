@@ -1,7 +1,6 @@
 import React from 'react';
 import MySearch from '../../components/UI element/input/MySearch';
-import CardList from '../../components/cardList';
-import ISearchProps from '../../components/UI element/input/TSearch';
+import CardList from '../../components/UI element/cardlist/cardList';
 import { useEffect, useState } from 'react';
 import characterService from '../../services/CharacterService';
 import { TCharacters } from '../../components/types/types';
@@ -13,12 +12,12 @@ function HomePage() {
   const [isLoading, setisLoading] = useState(true);
   const [sortBy, setSortBy] = useState(localStorage.getItem('rssSearch') || '');
   const handleSearch = (value: string) => {
-    setSortBy(value)
-  }
+    setSortBy(value);
+  };
   const getCharacters = async (value = '') => {
     setisLoading(true);
     try {
-      setError('')
+      setError('');
       const dataCharacters = await characterService.get(value);
       setCharacters(dataCharacters);
     } catch (error) {
@@ -28,7 +27,7 @@ function HomePage() {
       }
     }
     setisLoading(false);
-  }
+  };
   useEffect(() => {
     getCharacters(localStorage.getItem('rssSearch') || '');
   }, []);
@@ -47,7 +46,7 @@ function HomePage() {
       <MySearch setSortBy={handleSearch} sortBy={sortBy} getData={getCharacters} />
       {!error ? characters && <CardList data={characters} /> : <h1 data-testid="error">{error}</h1>}
     </>
-  )
+  );
 }
 
 export default HomePage;

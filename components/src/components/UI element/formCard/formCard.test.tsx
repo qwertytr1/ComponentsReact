@@ -4,8 +4,8 @@ import FormCard from './formCard';
 import React from 'react';
 
 describe('FormCard', () => {
-    it('Render Item', () => {
-        render(<FormCard />);
-        expect(screen.getByTestId('form-card-item')).toBeInTheDocument();
-    });
+  it('Render Item', () => {
+    render(<FormCard />);
+    expect(screen.getByTestId('form-card-item')).toBeInTheDocument();
+  });
 });

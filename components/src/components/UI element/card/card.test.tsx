@@ -1,14 +1,27 @@
+import { describe, expect, it } from 'vitest';
+import { fireEvent, render, screen } from '@testing-library/react';
+import CardItem from './Card';
+import testData from '../../../assets/data/furnitur';
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import Card from './Card';
-import { data } from '../../../assets/data/furnitur';
 
-describe('Card tests:', () => {
-  beforeEach(() => {
-    render(<Card {...data.flat(3)[0]} />);
+describe('Card component', () => {
+  it('Render Item', () => {
+    const data = [...testData];
+    render(<CardItem data={data[0]} />);
+    expect(screen.getByTestId('card-item')).toBeInTheDocument();
+    expect(screen.queryByTestId('type')).toBeNull();
   });
-
-  it('Card mounted', () => {
-    expect(screen.getByTestId('card')).toBeInTheDocument();
+  it('Render Item with type', () => {
+    const data = [...testData];
+    render(<CardItem data={data[2]} />);
+    expect(screen.getByTestId('card-item')).toBeInTheDocument();
+    expect(screen.queryByTestId('type')).not.toBeNull();
+  });
+  it('Open modal', () => {
+    const data = [...testData];
+    render(<CardItem data={data[2]} />);
+    const button = screen.getByText(/More detalis/i);
+    fireEvent.click(button);
+    expect(screen.getByTestId('modal')).toBeInTheDocument();
   });
 });

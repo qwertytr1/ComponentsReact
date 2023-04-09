@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { TCharacters } from '../../types/types';
 import styles from './card.module.css';
