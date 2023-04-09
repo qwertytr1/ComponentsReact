@@ -1,13 +1,12 @@
 import React from 'react';
 import MySearch from '../../components/UI element/input/MySearch';
 import CardList from '../../components/cardList';
-import './mainPage.css';
 import ISearchProps from '../../components/UI element/input/TSearch';
 import { useEffect, useState } from 'react';
 import characterService from '../../services/CharacterService';
 import { TCharacters } from '../../components/types/types';
 import axios from 'axios';
-import styles from './HomePage.module.scss';
+import styles from './mainPage.module.css';
 function HomePage() {
   const [characters, setCharacters] = useState<TCharacters['results'] | null>(null);
   const [error, setError] = useState<string>();

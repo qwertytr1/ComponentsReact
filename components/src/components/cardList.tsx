@@ -1,5 +1,5 @@
 import CardItem from './UI element/card/Card';
-import styles from './CardsList.module.scss';
+import styles from './cardList.module.css';
 import { TCharacters } from './types/types';
 import React from 'react';
 

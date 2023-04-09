@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import styles from './SearchBar.module.scss';
+import styles from './search.module.css';
 
 type TProps = { sortBy: string; setSortBy: (value: string) => void; getData: (value?: string) => Promise<void> };
 
