@@ -1,35 +1,39 @@
+
+import { useState } from 'react';
+import { TCharacters } from '../../types/types';
+import styles from './Card.module.scss';
+import Modal from '../../modal/Modal';
+import MoreDetailedCard from '../moreDetailedCard/MoreDetailedCard';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import stCard from './Card.module.css';
 type TProps = {
-  dataProps: {
-    id: number;
-    title: string;
-    description: string;
-    price: string;
-    discountPercentage: string;
-    rating: number;
-    stock: number;
-    brand: string;
-    category: string;
-    img: string[];
-    total: number;
-  }
+  data: TCharacters['results'][0];
+};
+
+function CardItem({ data }: TProps) {
+  const [isModalActive, setIsModalActive] = useState(false);
+
+  const handleClick = () => {
+    setIsModalActive(true);
+  };
+  return (
+    <>
+      <div className={styles.card} data-testid="card-item">
+        <div>
+          <b>#{data.id}</b>
+        </div>
+        <img src={data.image} alt={data.name} />
+        <h3 style={{ textAlign: 'center', width: '100%' }}>{data.name}</h3>
+        <div>Gender: {data.gender}</div>
+        <div>Status: {data.status}</div>
+        <div>Species: {data.species}</div>
+        {data.type && <div data-testid="type">Type: {data.type}</div>}
+        <button className={styles.card__btn} onClick={handleClick}>
+          More detalis
+        </button>
+      </div>
+      {isModalActive && <Modal setActive={setIsModalActive}>{<MoreDetailedCard data={data} />}</Modal>}
+    </>
+  );
 }
 
-function Card({ dataProps }: TProps) {
-  return (
-    <div data-testid="card" className={stCard.cards__card}>
-      <div className={stCard.card__images}>
-        <img src={dataProps.img[0]} title={dataProps.description} alt={dataProps.title} />
-      </div>
-      <div className={stCard.card__text}>
-        <div className={stCard.card__category}>{dataProps.category}</div>
-        <div className={stCard.card__name}>{dataProps.title}</div>
-        <div className={stCard.card__brand}>{dataProps.brand}</div>
-        <div className={stCard.card__price}>{dataProps.price}</div>
-      </div>
-    </div>
-  )
-}
-export default Card;
+export default CardItem;
