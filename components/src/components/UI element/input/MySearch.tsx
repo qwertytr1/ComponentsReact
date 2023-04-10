@@ -10,7 +10,6 @@ function SearchBar({ sortBy, setSortBy, getData }: TProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     getData(sortBy);
-    console.log('submit', sortBy);
   };
 
   useEffect(() => () => {
