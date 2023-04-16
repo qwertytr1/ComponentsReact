@@ -29,4 +29,14 @@ type TCharacters = {
   ];
 };
 
-export type { TCharacters };
+type TCard = {
+  name: string;
+  birthday: string;
+  op: string;
+  like: boolean;
+  gender: string;
+  file: string;
+  id: string;
+};
+
+export type { TCharacters, TCard };

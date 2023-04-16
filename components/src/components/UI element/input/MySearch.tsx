@@ -1,26 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useRef } from 'react';
 import styles from './search.module.css';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { changeSearch, getSearch } from '../../../store/search';
+function SearchBar() {
+  const searchRef = useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
+  const search = useAppSelector(getSearch());
 
-type TProps = { sortBy: string; setSortBy: (value: string) => void; getData: (value?: string) => Promise<void> };
-
-function SearchBar({ sortBy, setSortBy, getData }: TProps) {
-  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSortBy(e.target.value);
-  };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    getData(sortBy);
+    dispatch(changeSearch(searchRef.current?.value || ''));
   };
-
-  useEffect(() => () => {
-    localStorage.setItem('rssSearch', sortBy);
-  });
 
   return (
     <form className={styles.search__form} onSubmit={handleSubmit}>
       <input
-        onChange={searchHandler}
-        defaultValue={sortBy}
+        ref={searchRef}
+        defaultValue={search}
         placeholder="Search..."
         type="search"
         name="search"

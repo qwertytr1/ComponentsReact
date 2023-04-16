@@ -1,26 +1,18 @@
 import React from 'react';
 import styles from './FormCard.module.css';
-
+import { TCard } from '../../types/types'
 type TypeProps = {
-  dataPr: {
-    name: string;
-    birthday: string;
-    op?: string;
-    like: boolean;
-    gender: string;
-    file: string;
-    id: string;
-  };
+  data: TCard;
 };
-function FormCard({ dataPr }: TypeProps) {
+function FormCard({ data }: TypeProps) {
   return (
     <div className={styles.form_card} data-testid="form-card-item">
-      <h3>{dataPr.name}</h3>
-      <img src={dataPr.file} alt={dataPr.name} />
-      <div>Birthday: {dataPr.birthday}</div>
-      <div>Options: {dataPr.op}</div>
-      <div>Do you like this course: {dataPr.like ? 'Yes' : 'No'}</div>
-      <div>Gender: {dataPr.gender}</div>
+      <h3>{data.name}</h3>
+      <img src={data.file} alt={data.name} />
+      <div>Birthday: {data.birthday}</div>
+      <div>Options: {data.op}</div>
+      <div data-testid="passport-checkbox">Do you like this course: {data.like ? 'Yes' : 'No'}</div>
+      <div>Gender: {data.gender}</div>
     </div>
   );
 }
