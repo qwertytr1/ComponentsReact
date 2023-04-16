@@ -7,20 +7,16 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Layout = () => {
   return (
-    <div className="wrapper">
-      <header className="header">
-        <Header />
-      </header>
+    <>
+      <Header />
       <main className={styles.main} data-testid="layout">
         <div className={styles.container}>
           <Outlet />
           <ToastContainer position="top-left" autoClose={2000} />
         </div>
       </main>
-      <footer className="footer">
-        <Footer />
-      </footer>
-    </div>
+      <Footer />
+    </>
   );
 };
 

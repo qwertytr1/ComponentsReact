@@ -32,7 +32,7 @@ type TCharacters = {
 type TCard = {
   name: string;
   birthday: string;
-  op: string;
+  breed: string;
   like: boolean;
   gender: string;
   file: string;

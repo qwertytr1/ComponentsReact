@@ -10,7 +10,7 @@ function FormCard({ data }: TypeProps) {
       <h3>{data.name}</h3>
       <img src={data.file} alt={data.name} />
       <div>Birthday: {data.birthday}</div>
-      <div>Options: {data.op}</div>
+      <div>Options: {data.breed}</div>
       <div data-testid="passport-checkbox">Do you like this course: {data.like ? 'Yes' : 'No'}</div>
       <div>Gender: {data.gender}</div>
     </div>
