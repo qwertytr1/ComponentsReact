@@ -2,8 +2,8 @@
 //@ts-nocheck
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import data from '../../assets/data';
-import HomePage from './mainPagee';
+import data from '../../assets/data/furnitur';
+import HomePage from './mainPage';
 import { useState } from 'react';
 import CardsList from '../../components/UI element/cardlist/cardList';
 import { Provider } from 'react-redux';
