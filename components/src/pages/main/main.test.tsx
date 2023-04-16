@@ -2,10 +2,12 @@
 //@ts-nocheck
 import { describe, expect, it } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import data from '../../assets/data/furnitur';
-import HomePage from './mainPage';
+import data from '../../assets/data';
+import HomePage from './mainPagee';
 import { useState } from 'react';
 import CardsList from '../../components/UI element/cardlist/cardList';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
 
 const TestingComp = () => {
   const [characters] = useState(data);
@@ -25,7 +27,11 @@ const TestingComp = () => {
 
 describe('HomePage', () => {
   it('Render without data', () => {
-    render(<HomePage />);
+    render(
+      <Provider store={store}>
+        <HomePage />
+      </Provider>
+    );
     expect(screen.getByTestId('spinner')).toBeInTheDocument();
   });
   it('Render with data', () => {

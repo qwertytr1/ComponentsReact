@@ -2,28 +2,28 @@ import { createSlice } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from './store';
 
 type TSearch = {
-    value: string;
+  value: string;
 };
 
 const initialState: TSearch = {
-    value: '',
+  value: '',
 };
 
 const searchSlice = createSlice({
-    name: 'search',
-    initialState,
-    reducers: {
-        changedSearch: (state, action) => {
-            state.value = action.payload;
-        },
+  name: 'search',
+  initialState,
+  reducers: {
+    changedSearch: (state, action) => {
+      state.value = action.payload;
     },
+  },
 });
 
 const { actions, reducer: searchReducer } = searchSlice;
 const { changedSearch } = actions;
 
 export const changeSearch = (payload: string) => (dispatch: AppDispatch) => {
-    dispatch(changedSearch(payload));
+  dispatch(changedSearch(payload));
 };
 
 export const getSearch = () => (state: RootState) => state.search.value;

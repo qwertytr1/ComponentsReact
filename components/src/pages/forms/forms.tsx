@@ -1,6 +1,5 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { createCard, getAllCards } from '../../store';
@@ -12,7 +11,6 @@ import FileInput from '../../components/UI element/InputForm/fileInput';
 import Selected from '../../components/UI element/InputForm/selectedBox';
 import styles from './form.module.css';
 import FormCard from '../../components/UI element/formCard/formCard';
-
 
 const switchOptions = ['Male', 'Female'];
 const selectOptions = [

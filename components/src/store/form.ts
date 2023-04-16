@@ -1,32 +1,30 @@
-
 import { createSlice } from '@reduxjs/toolkit';
 import { AppDispatch, RootState } from './store';
 import { TCard } from '../components/types/types';
 type TCardForm = {
-    entities: TCard[];
+  entities: TCard[];
 };
 
 const initialState: TCardForm = {
-    entities: [],
+  entities: [],
 };
 
 const formSlice = createSlice({
-    name: 'cardsForm',
-    initialState,
-    reducers: {
-        createdCard: (state, action) => {
-            state.entities.push(action.payload);
-        },
+  name: 'cardsForm',
+  initialState,
+  reducers: {
+    createdCard: (state, action) => {
+      state.entities.push(action.payload);
     },
+  },
 });
 
 const { actions, reducer: formReducer } = formSlice;
 const { createdCard } = actions;
 
 export const createCard = (payload: TCard) => (dispatch: AppDispatch) => {
-    dispatch(createdCard(payload));
+  dispatch(createdCard(payload));
 };
 
 export const getAllCards = () => (state: RootState) => state.form.entities;
-
 export default formReducer;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './FormCard.module.css';
-import { TCard } from '../../types/types'
+import { TCard } from '../../types/types';
 type TypeProps = {
   data: TCard;
 };

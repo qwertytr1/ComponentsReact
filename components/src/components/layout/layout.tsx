@@ -1,11 +1,11 @@
 import React from 'react';
-import styles from './layout.module.css'
+import styles from './layout.module.css';
 import { Outlet } from 'react-router-dom';
 import Footer from '../footer';
 import Header from '../Header';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Layout = () => {
+function Layout() {
   return (
     <>
       <Header />
@@ -18,6 +18,6 @@ const Layout = () => {
       <Footer />
     </>
   );
-};
+}
 
 export { Layout };

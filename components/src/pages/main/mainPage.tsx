@@ -6,8 +6,8 @@ import { getSearch, useGetCharactersQuery } from '../../store';
 import styles from './mainPage.module.css';
 function HomePage() {
   const search = useAppSelector(getSearch());
-  const { data = [], isFetching, isError } = useGetCharactersQuery(search);
 
+  const { data = [], isFetching, isError } = useGetCharactersQuery(search);
 
   if (isFetching) {
     return (
@@ -16,12 +16,11 @@ function HomePage() {
       </div>
     );
   }
-
   return (
     <>
       <h2>Home page</h2>
       <MySearch />
-      {!isError ? data && <CardList data={data.results} /> : <h1 data-testid="error">Nothing</h1>}
+      {!isError ? data && <CardList data={data.results} /> : <h1 data-testid="error">There is nothing here</h1>}
     </>
   );
 }
